@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos</title>
+    <style>
+        body {
+      font-family: sans-serif;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #61f7ef;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #999;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f4f4f4;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
+      gap: 10px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .form-grid label {
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .form-grid input {
+      width: 100%;
+      padding: 6px;
+      box-sizing: border-box;
+    }
+
+    .form-grid .full-row {
+      grid-column: 1 / -1; /* span all columns */
+      text-align: center;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+    <h1>Productos</h1>
+    <div class="full-row"> 
+        <button type="submit" onclick="pacientes.html" aria-label="Ir a tips para pacientes">Pacientes Tips</button>
+    </div>
+    <label for="nuevoP">Puede agregar un nuevo producto a la lista</label>
+    <div class="form-grid">
+        <label for="nombre">Nombre</label>
+        <label for="costo">Costo</label>
+        <label for="caducidad">Caducidad</label>
+        <label for="cantidad">Cantidad</label>
+
+        <input type="text" id="nombre" name="nombre" placeholder="Nombre" aria-label="Aqui va el nombre"/>
+        <input type="text" id="costo" name="costo" placeholder="Costo" aria-label="Aqui escribes el costo"/>
+        <input type="text" id="caducidad" name="caducidad" placeholder="Caducidad"  aria-label="Aqui escribes la caducidad"/>
+        <input type="text" id="cantidad" name="cantidad" placeholder="Cantidad" aria-label="Por ultimo, la cantidad" />
+
+        <div class="full-row">
+            <button type="submit" onclick="agregarProducto()" aria-label="Agregar producto a la lista">Agregar</button>
+        </div>
+    </div>
+    <table id="cuerpo"></table>
+    <table id="imagenes"></table>
+  <script>
+
+    function loadXMLDoc() {
+           
+            const xhttp = new XMLHttpRequest();
+            xhttp.onload = function() {
+                const xmlDoc = xhttp.responseXML;
+                const cat = xmlDoc.getElementsByTagName("PRODUCTO");
+                completar(cat);
+            }
+            xhttp.open("GET", "xmlProductos.xml");
+            xhttp.send();
+            
+        }
+
+    function completar(cat){
+        let table="<tr><th>Nombre</th><th>Costo</th><th>Caducidad</th><th>Cantidad</th></tr>";
+        for (let i = 0; i < cat.length; i++) {
+            table += "<tr><td>" +
+            cat[i].getElementsByTagName("Nombre")[0].childNodes[0].nodeValue +
+            "</td><td>" +
+            cat[i].getElementsByTagName("Costo")[0].childNodes[0].nodeValue +
+            "</td><td>"+
+            cat[i].getElementsByTagName("Caducidad")[0].childNodes[0].nodeValue +
+            "</td><td>"+
+            cat[i].getElementsByTagName("Caducidad")[0].childNodes[0].nodeValue +
+            "</td></tr>";
+          }
+          document.getElementById("cuerpo").innerHTML = table;
+    }
+
+    function completarImagenes(){
+        let table="<tr><th>Imagenes</th></tr>";
+        for (let i = 50; i < 56; i++) {
+            table += "<tr><td>" +
+                "<figure>"+
+                    "<img src='https://picsum.photos/id/"+i+"/200/'' alt='Imagen representativa"+i+"'>"+
+                "</figure>"+
+            "</td></tr>";
+          }
+          document.getElementById("imagenes").innerHTML = table;
+    }
+
+    function agregarProducto(){
+        let table = document.getElementById("cuerpo").innerHTML
+        table += "<tr><td>" +
+            document.getElementById("nombre").value+
+            "</td><td>" +
+            document.getElementById("costo").value +
+            "</td><td>"+
+            document.getElementById("caducidad").value+
+            "</td><td>"+
+            document.getElementById("cantidad").value +
+            "</td></tr>";
+        document.getElementById("cuerpo").innerHTML = table;
+    }
+
+    loadXMLDoc();
+    completarImagenes();
+  </script>
+</body>
+</html>

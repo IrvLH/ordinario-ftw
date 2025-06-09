@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CATALOGO>
+    <PRODUCTO>
+        <Nombre>a</Nombre>
+        <Costo>23</Costo>
+        <Caducidad>01/02/2020</Caducidad>
+        <Cantidad>20</Cantidad>
+    </PRODUCTO>
+    <PRODUCTO>
+        <Nombre>b</Nombre>
+        <Costo>40</Costo>
+        <Caducidad>01/02/2020</Caducidad>
+        <Cantidad>50</Cantidad>
+    </PRODUCTO>
+    <PRODUCTO>
+        <Nombre>c</Nombre>
+        <Costo>70</Costo>
+        <Caducidad>01/02/2020</Caducidad>
+        <Cantidad>60</Cantidad>
+    </PRODUCTO>
+</CATALOGO>
