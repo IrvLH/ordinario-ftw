@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CATALOGO>
     <PRODUCTO>
-        <Nombre>a</Nombre>
-        <Costo>23</Costo>
-        <Caducidad>01/02/2020</Caducidad>
+        <Nombre>Jabon Neutro</Nombre>
+        <Costo>80</Costo>
+        <Caducidad>18/02/2028</Caducidad>
         <Cantidad>20</Cantidad>
     </PRODUCTO>
     <PRODUCTO>
-        <Nombre>b</Nombre>
-        <Costo>40</Costo>
-        <Caducidad>01/02/2020</Caducidad>
+        <Nombre>Paracetamol</Nombre>
+        <Costo>44</Costo>
+        <Caducidad>08/08/2027</Caducidad>
         <Cantidad>50</Cantidad>
     </PRODUCTO>
     <PRODUCTO>
-        <Nombre>c</Nombre>
+        <Nombre>Suero Uva</Nombre>
         <Costo>70</Costo>
-        <Caducidad>01/02/2020</Caducidad>
+        <Caducidad>26/10/2026</Caducidad>
         <Cantidad>60</Cantidad>
     </PRODUCTO>
 </CATALOGO>

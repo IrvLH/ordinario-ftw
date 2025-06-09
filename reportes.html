@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reportes</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #1bb9b1;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #999;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .form-grid label {
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .form-grid input {
+            width: 100%;
+            padding: 6px;
+            box-sizing: border-box;
+        }
+
+        .form-grid .full-row {
+            grid-column: 1 / -1;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Reportes</h1>
+    <div class="full-row">
+        <button type="submit" onclick="window.location.href = 'index.html'" aria-label="Ir a login">Login</button> 
+        <button type="submit" onclick="window.location.href = 'productos.html'" aria-label="Ir a pagina de productos">Productos</button>
+    </div>
+    <div role="controls">
+        <button id="bot1" role="tab" aria-selected="true" aria-controls="uno">Mostrar reportes</button>
+        
+    </div>
+
+    <h3 aria-label="Con el siguiente formulario, crea un reporte">Genera un reporte</h3>
+
+    <div id="formulario" class="form-grid" hidden="true">
+        <label for="nombre">Nombre Empleado</label>
+        <label for="costo">Costo Total</label>
+        <label for="fecha">Fecha</label>
+        <label for="cantidad">Cantidad de productos</label>
+
+        <input type="text" id="nombre" name="nombre" placeholder="Nombre" aria-label="Aqui va el nombre"/>
+        <input type="text" id="costo" name="costo" placeholder="Costo" aria-label="Aqui escribes el costo"/>
+        <input type="text" id="fecha" name="fecha" placeholder="Fecha"  aria-label="Aqui escribes la fehca"/>
+        <input type="text" id="cantidad" name="cantidad" placeholder="Cantidad" aria-label="Por ultimo, la cantidad" />
+
+        <div class="full-row">
+            <button type="submit" onclick="agregarProducto()" aria-label="Agregar reporte a la tabla">Agregar</button>
+        </div>
+    </div>
+
+    <div id="uno" role="tabla" hidden="true">
+        <table id="reportes">
+            <tr><th>Nombre</th><th>Costo</th><th>Caducidad</th><th>Cantidad</th></tr>
+        </table>
+    </div>
+
+    <script>
+        const mostrar = document.getElementsByTagName("button")[2]
+        const crearR = document.getElementsByTagName("button")[3]
+
+        mostrar.addEventListener("click", ()=>{
+            const tabla=document.getElementById("uno")
+            console.log(11)
+            if(tabla.getAttribute("hidden")){
+                mostrar.setAttribute("aria-expanded","true")
+                tabla.removeAttribute("hidden")
+                console.log(22)
+            }else{
+                mostrar.setAttribute("aria-expanded","false")
+                tabla.setAttribute("hidden","true")
+                console.log(33)
+            }
+        })
+
+        crearR.addEventListener("click", ()=>{
+            const tabla=document.getElementById("formulario")
+            console.log(11)
+            if(tabla.getAttribute("hidden")){
+                crearR.setAttribute("aria-expanded","true")
+                tabla.removeAttribute("hidden")
+                console.log(22)
+            }else{
+                crearR.setAttribute("aria-expanded","false")
+                tabla.setAttribute("hidden","true")
+                console.log(33)
+            }
+        })
+
+        function agregarProducto(){
+            let table = document.getElementById("reportes").innerHTML
+            table += "<tr><td>" +
+                document.getElementById("nombre").value+
+                "</td><td>" +
+                document.getElementById("costo").value +
+                "</td><td>"+
+                document.getElementById("fecha").value+
+                "</td><td>"+
+                document.getElementById("cantidad").value +
+                "</td></tr>";
+            document.getElementById("reportes").innerHTML = table;
+        }
+
+    </script>
+</body>
+</html>

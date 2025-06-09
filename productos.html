@@ -6,56 +6,57 @@
     <title>Productos</title>
     <style>
         body {
-      font-family: sans-serif;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      background-color: #61f7ef;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-    }
-    th, td {
-      border: 1px solid #999;
-      padding: 8px;
-      text-align: left;
-    }
-    th {
-      background-color: #f4f4f4;
-    }
-    .form-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
-      gap: 10px;
-      max-width: 800px;
-      margin: 0 auto;
-    }
+            font-family: sans-serif;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #1bb9b1;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #999;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
 
-    .form-grid label {
-      text-align: center;
-      font-weight: bold;
-    }
+        .form-grid label {
+            text-align: center;
+            font-weight: bold;
+        }
 
-    .form-grid input {
-      width: 100%;
-      padding: 6px;
-      box-sizing: border-box;
-    }
+        .form-grid input {
+            width: 100%;
+            padding: 6px;
+            box-sizing: border-box;
+        }
 
-    .form-grid .full-row {
-      grid-column: 1 / -1; /* span all columns */
-      text-align: center;
-      margin-top: 10px;
-    }
+        .form-grid .full-row {
+            grid-column: 1 / -1;
+            text-align: center;
+            margin-top: 10px;
+        }
   </style>
 </head>
 <body>
     <h1>Productos</h1>
-    <div class="full-row"> 
-        <button type="submit" onclick="pacientes.html" aria-label="Ir a tips para pacientes">Pacientes Tips</button>
+    <div class="full-row">
+        <button type="submit" onclick="window.location.href = 'index.html'" aria-label="Ir a login">Login</button> 
+        <button type="submit" onclick="window.location.href = 'reportes.html'" aria-label="Ir a pagina reportes">Reportes</button>
     </div>
     <label for="nuevoP">Puede agregar un nuevo producto a la lista</label>
     <div class="form-grid">
@@ -100,7 +101,7 @@
             "</td><td>"+
             cat[i].getElementsByTagName("Caducidad")[0].childNodes[0].nodeValue +
             "</td><td>"+
-            cat[i].getElementsByTagName("Caducidad")[0].childNodes[0].nodeValue +
+            cat[i].getElementsByTagName("Cantidad")[0].childNodes[0].nodeValue +
             "</td></tr>";
           }
           document.getElementById("cuerpo").innerHTML = table;
